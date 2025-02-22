@@ -25,7 +25,7 @@ onSelectRecipe() {
   this.recipeSelected.emit(); 
   setTimeout(() => {
     this.loadingService.hide(); 
-  }, 2000);
+  }, 1000);
 }
 }
 
