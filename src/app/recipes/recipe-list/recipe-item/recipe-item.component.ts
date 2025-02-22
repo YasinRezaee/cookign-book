@@ -21,12 +21,10 @@ ngOnInit(): void {
 }
 
 onSelectRecipe() {
-  this.loadingService.show(); // Show the loading spinner
-  this.recipeSelected.emit(); // Emit the recipe selected event
-
-  // Set a timeout to hide the loading spinner after a delay
+  this.loadingService.show();
+  this.recipeSelected.emit(); 
   setTimeout(() => {
-    this.loadingService.hide(); // Hide the loading spinner
-  }, 2000); // Change 2000 to the desired time in milliseconds (e.g., 2000ms = 2 seconds)
+    this.loadingService.hide(); 
+  }, 2000);
 }
 }
