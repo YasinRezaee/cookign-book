@@ -1,0 +1,25 @@
+<mat-toolbar class="bg-dark text-danger mb-4">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon class="text-danger">menu</mat-icon>
+    </button>
+    <span>Recipe Book</span>
+    <div class="ms-4">
+      <a routerLink="/recipes" routerLinkActive="active" class="btn btn-md text-danger" >Recipe</a>
+      <a routerLink="/shopping-list" routerLinkActive="active" class="btn btn-md text-danger" >Shopping List</a>
+    </div>
+    <span class="example-spacer"></span>
+    <button mat-button [matMenuTriggerFor]="menu" class="text-danger">Manage</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item class="text-primary">Save Data</button>
+      <button mat-menu-item class="text-primary">Fetch Data</button>
+    </mat-menu>
+  </mat-toolbar> 
+  
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+          <app-loading></app-loading>
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div> 

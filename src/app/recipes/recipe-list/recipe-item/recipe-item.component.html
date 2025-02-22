@@ -1,0 +1,6 @@
+<button  (click)="onSelectRecipe()"
+    class="btn d-flex justify-content-between align-items-center border border-info mb-3 w-100 btn-card">
+    <span class="text-danger">{{recipe?.name}}</span>
+    <small>{{recipe?.description}}</small>
+    <img src="{{recipe?.imagePath}}" alt="recipe.name" class="img-recipe rounded-circle border border-primary">
+</button>

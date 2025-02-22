@@ -1,0 +1,11 @@
+<div class="row">
+    <div class="col-xs-10">
+        <app-shopping-edit (newIngredient)="onIngAdded($event)"></app-shopping-edit>
+        <hr>
+        <ul class="list-group">
+        @for (ingre of ingredients; track $index) {
+                <li class="list-group-item">{{ingre.name}} _____ ( {{ingre.amount}} )</li>
+            }
+        </ul>
+    </div>
+</div>
