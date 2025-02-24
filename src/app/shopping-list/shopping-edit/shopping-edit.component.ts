@@ -3,7 +3,8 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule} from '@angular/forms';
 import { v4 as uuidv4 } from 'uuid';  
-
+import { ShoppingListService } from '../../services/shopping-list.service';
+import { Ingredient } from '../../Models/ingredient';
 @Component({
   selector: 'app-shopping-edit',
   imports: [MatInputModule, MatFormFieldModule, FormsModule],
@@ -13,8 +14,10 @@ import { v4 as uuidv4 } from 'uuid';
 export class ShoppingEditComponent implements OnInit{
   @ViewChild('name') nameInputRef?:ElementRef;
   @ViewChild('amount') amountInputRef?:ElementRef;
-  @Output() newIngredient = new EventEmitter<any>();
-  constructor() { }
+
+  constructor(
+    private slService: ShoppingListService,
+  ) { }
 
   ngOnInit(): void {
      
@@ -23,6 +26,10 @@ export class ShoppingEditComponent implements OnInit{
     const ingredientId = uuidv4();
     const ingName = this.nameInputRef?.nativeElement.value;
     const ingAmount = this.amountInputRef?.nativeElement.value;
-    this.newIngredient.emit({id:ingredientId,name: ingName, amount: ingAmount});
+    const newIng: Ingredient = {id: ingredientId, name: ingName, amount: ingAmount};
+    this.slService.addIngredient(newIng);
+    console.log("new`", newIng);
+    
   }
 }
+ 

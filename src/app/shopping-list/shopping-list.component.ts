@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ShoppingEditComponent } from "./shopping-edit/shopping-edit.component";
 import { Ingredient } from '../Models/ingredient';
 import {MatTableModule} from '@angular/material/table';
+import { ShoppingListService } from '../services/shopping-list.service';
 
 @Component({
   selector: 'app-shopping-list',
@@ -11,21 +12,19 @@ import {MatTableModule} from '@angular/material/table';
 })
 export class ShoppingListComponent implements OnInit {
   recivedIngr:any;
-  ingredients:Ingredient[] = [
-    {id: 1,name: 'Apples', amount: 5},
-    {id: 2,name: 'Tomatoes', amount: 10},
-    {id: 3,name: 'Bananas', amount: 15},
-    {id: 4,name: 'Carrots', amount: 20}, 
-    {id: 5,name: 'Potatoes', amount: 25}, 
-  ];
-  constructor() { }
+  ingredients:Ingredient[] = [];
+  constructor(
+    private service: ShoppingListService,
+  ) { }
 
   ngOnInit(): void {
-     
+     this.ingredients = this.service.getIngredients();
+     this.service.ingredientChanged.subscribe(
+      (ingredients: Ingredient[]) => {
+        this.ingredients = ingredients;
+      }
+    );
   }
 
-  onIngAdded(ingr:any){
-    this.recivedIngr=ingr;
-    this.ingredients.push(this.recivedIngr);
-  }
 }
+ 
