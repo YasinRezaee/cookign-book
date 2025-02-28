@@ -1,18 +1,18 @@
 <div class="row">
-    <form class="example-form col-12">
+    <form class="example-form col-12" [formGroup]="ingrdsForm">
         <mat-form-field class="example-full-width col-sm-4 me-3" appearance="outline">
             <mat-label>Ingredient Name</mat-label>
-            <input #name matInput placeholder="Ex. Apple" value="Apple">
+            <input  matInput placeholder="Ex. Apple" value="Apple" formControlName="name" />
         </mat-form-field>
         <mat-form-field class="example-full-width col-sm-2" appearance="outline">
             <mat-label> Amount</mat-label>
-            <input #amount matInput type="number" class="example-right-align" placeholder="0" />
+            <input  matInput type="number" class="example-right-align" placeholder="0" formControlName="amount" />
         </mat-form-field>
     </form>
 </div>
 <div class="row">
     <div class="col-sm-12">
-        <button class="btn btn-success me-3 btn-ingred" (click)="addIngredient()">Add </button>
+        <button class="btn btn-success me-3 btn-ingred" (click)="addIngredient(ingrdsForm.value)">Add </button>
         <button class="btn btn-danger me-3 btn-ingred">Delete</button>
         <button class="btn btn-warning btn-ingred text-light">Clear</button>
     </div>

@@ -10,7 +10,10 @@ import { LoadingComponent } from "./Loading/loading/loading.component";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CommonModule, RouterLink, RouterLinkActive, MatToolbarModule, MatButtonModule, MatIconModule, MatMenuModule, LoadingComponent],
+  imports: [RouterOutlet, CommonModule,
+     RouterLink, RouterLinkActive,
+     MatToolbarModule, MatButtonModule, 
+     MatIconModule, MatMenuModule, LoadingComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

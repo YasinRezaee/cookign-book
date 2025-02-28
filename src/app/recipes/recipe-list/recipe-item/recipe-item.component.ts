@@ -11,13 +11,11 @@ import { RecipesService } from '../../../services/recipes.service';
 })
 export class RecipeItemComponent implements OnInit{
 @Input() recipe?:Recipe;
- 
 
 constructor(
   private loadingService: LoadingService,
   private recipeService: RecipesService
 ) { }
-
 ngOnInit(): void {
    
 }
@@ -25,9 +23,7 @@ ngOnInit(): void {
 onSelectRecipe() {
   this.loadingService.show();
   this.recipeService.recipeSelected.emit(this.recipe )
-  setTimeout(() => {
-    this.loadingService.hide(); 
-  }, 1000);
+  this.loadingService.hide(); 
 }
 }
 

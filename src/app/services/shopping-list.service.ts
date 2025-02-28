@@ -1,27 +1,24 @@
-import { EventEmitter, Injectable } from '@angular/core';
+import {  Injectable, OnInit } from '@angular/core';
 import { Ingredient } from '../Models/ingredient';
+import { ApiService } from './api.service';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ShoppingListService {
-  ingredientChanged = new EventEmitter<Ingredient[]>();
-  ingredients:Ingredient[] = [
-    {id: 1,name: 'Apples', amount: 5},
-    {id: 2,name: 'Tomatoes', amount: 10},
-    {id: 3,name: 'Bananas', amount: 15},
-    {id: 4,name: 'Carrots', amount: 20}, 
-    {id: 5,name: 'Potatoes', amount: 25}, 
-  ];
-  constructor() { }
-
-  getIngredients(){
-    return this.ingredients.slice();
+export class ShoppingListService implements OnInit{
+ ingredients: Ingredient[] = [];
+  constructor(
+    private apiService: ApiService,
+  ) { }
+  ngOnInit(): void {
+    this.getIngredients();
   }
 
-  addIngredient(ingredient:Ingredient){
-    this.ingredients.push(ingredient);
-    this.ingredientChanged.emit(this.ingredients.slice());
-    
+getIngredients(){
+    return this.apiService.get('ingredients');
   }
-  }
+addNewIgrds(model:Ingredient):Observable<any>{
+ return this.apiService.post('ingredients', model);
+}
+}

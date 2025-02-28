@@ -1,0 +1,192 @@
+{
+  "recipes": [
+    {
+      "id": "1",
+      "name": "Fettuccine Alfredo",
+      "description": "Fettuccine Alfredo is a pasta dish made with fettuccine pasta, butter, heavy cream, Romano cheese, and seasonings.",
+      "imagePath": "https://images.immediate.co.uk/production/volatile/sites/30/2022/08/Alfredo-dc662e3.jpg",
+      "ingredients": [
+        {
+          "id": "1",
+          "name": "apple",
+          "amount": 3
+        },
+        {
+          "id": "2",
+          "name": "pasta",
+          "amount": 2
+        },
+        {
+          "id": "3",
+          "name": "cheese",
+          "amount": 3
+        },
+        {
+          "id": "4",
+          "name": "pepper",
+          "amount": 44
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Ravioli",
+      "description": "Traditionally, ravioli are made at home. The filling varies according to the area where they are prepared.",
+      "imagePath": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbo8_47FMmuWuCBrw4e2Ap-rMtdkPUNiNdWQ&s",
+      "ingredients": [
+        {
+          "id": "5",
+          "name": "meat",
+          "amount": 6
+        },
+        {
+          "id": "6",
+          "name": "pepper",
+          "amount": 3
+        },
+        {
+          "id": "7",
+          "name": "milk",
+          "amount": 1
+        },
+        {
+          "id": "8",
+          "name": "bread",
+          "amount": 6
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "name": "Pancake",
+      "description": "A pancake, also known as a hotcake, griddlecake, or flapjack, is a flat cake, often thin and round.",
+      "imagePath": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqkLVjhL0i-ia5c_Zcmw-_f6eKo2QdIlYhNR0SC4-fRC2nafiC9ZVCSGyg2XJ-Bu_bgyQ&usqp=CAU",
+      "ingredients": [
+        {
+          "id": "9",
+          "name": "lemon",
+          "amount": 1
+        },
+        {
+          "id": "10",
+          "name": "yogurt",
+          "amount": 1
+        },
+        {
+          "id": "11",
+          "name": "fat milk",
+          "amount": 1
+        },
+        {
+          "id": "12",
+          "name": "cream",
+          "amount": 1
+        }
+      ]
+    }
+  ],
+  "ingredients": [
+    {
+      "id": "1",
+      "name": "Apples",
+      "amount": 5
+    },
+    {
+      "id": "f368e7e6-8af2-41a3-8ee3-7f11126405a1",
+      "name": "ff",
+      "amount": 2
+    },
+    {
+      "id": "1",
+      "name": "apple",
+      "amount": 3
+    },
+    {
+      "id": "2",
+      "name": "pasta",
+      "amount": 2
+    },
+    {
+      "id": "3",
+      "name": "cheese",
+      "amount": 3
+    },
+    {
+      "id": "4",
+      "name": "pepper",
+      "amount": 44
+    }
+  ],
+  "users": [
+    {
+      "name": "John",
+      "family": "Doe",
+      "password": "password123",
+      "email": "john.doe@example.com",
+      "id": "1bac"
+    },
+    {
+      "name": "Jane",
+      "family": "Smith",
+      "password": "password123",
+      "email": "jane.smith@example.com",
+      "id": "ce23"
+    },
+    {
+      "name": "Bob",
+      "family": "Johnson",
+      "password": "password123",
+      "email": "bob.johnson@example.com",
+      "id": "d942"
+    },
+    {
+      "name": "Alice",
+      "family": "Williams",
+      "password": "password123",
+      "email": "alice.williams@example.com",
+      "id": "e2f0"
+    },
+    {
+      "name": "Tom",
+      "family": "Brown",
+      "password": "password123",
+      "email": "tom.brown@example.com",
+      "id": "2808"
+    },
+    {
+      "name": "Emily",
+      "family": "Jones",
+      "password": "password123",
+      "email": "emily.jones@example.com",
+      "id": "dd25"
+    },
+    {
+      "name": "Michael",
+      "family": "Garcia",
+      "password": "password123",
+      "email": "michael.garcia@example.com",
+      "id": "dd50"
+    },
+    {
+      "name": "Sarah",
+      "family": "Martinez",
+      "password": "password123",
+      "email": "sarah.martinez@example.com",
+      "id": "b2d7"
+    },
+    {
+      "name": "David",
+      "family": "Hernandez",
+      "password": "password123",
+      "email": "david.hernandez@example.com",
+      "id": "1536"
+    },
+    {
+      "name": "Laura",
+      "family": "Lopez",
+      "password": "password123",
+      "email": "laura.lopez@example.com",
+      "id": "85ce"
+    }
+  ]
+}
