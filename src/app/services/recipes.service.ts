@@ -9,11 +9,14 @@ export class RecipesService {
  
   recipeSelected = new EventEmitter<Recipe>();
   constructor(
-    private aapiService: ApiService
+    private apiService: ApiService
   ) { }
 
   getAllRecipes(){
-    return this.aapiService.get('recipes');
+    return this.apiService.get('recipes');
   }
   
+  getRecipeById(id:number){
+    return this.apiService.get(`recipes/${id}`);
+  }
 }
