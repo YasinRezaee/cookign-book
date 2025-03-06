@@ -115,6 +115,26 @@
       "id": "4",
       "name": "pepper",
       "amount": 44
+    },
+    {
+      "id": "5",
+      "name": "meat",
+      "amount": 6
+    },
+    {
+      "id": "6",
+      "name": "pepper",
+      "amount": 3
+    },
+    {
+      "id": "7",
+      "name": "milk",
+      "amount": 1
+    },
+    {
+      "id": "8",
+      "name": "bread",
+      "amount": 6
     }
   ],
   "users": [
