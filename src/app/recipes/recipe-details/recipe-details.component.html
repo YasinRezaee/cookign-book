@@ -10,7 +10,7 @@
         <button [matMenuTriggerFor]="menu" class="btn bg-dark text-warning mx-5">Manage Recipe</button>
         <mat-menu #menu="matMenu">
           <button mat-menu-item class="text-primary" (click)="addToSoppingList(recipe?.ingredients)">To Shopping List</button>
-          <button mat-menu-item class="text-primary">Edit Recipe</button>
+          <button mat-menu-item class="text-primary" (click)="onEditRecipe()">Edit Recipe</button>
           <button mat-menu-item class="text-primary">Delete Recipe</button>
         </mat-menu>
       </div>

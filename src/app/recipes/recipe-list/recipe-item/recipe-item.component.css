@@ -5,3 +5,7 @@
 .btn-card{
     max-height: 200px !important;
 }
+.my-active-class{
+    border-color: #dd2909 !important;
+    background-color: #f8c5bc;
+}

@@ -3,12 +3,6 @@
         <app-recipe-list ></app-recipe-list>
     </div>
     <div class="col-md-7">
-        @if (selectedRecipe) {
-            <app-recipe-details [recipe]="selectedRecipe"></app-recipe-details>
-        }
-        @else {
-            <p>No Recipe Selected</p>
-        }
-                            
+          <router-outlet></router-outlet>   
     </div>
 </div>

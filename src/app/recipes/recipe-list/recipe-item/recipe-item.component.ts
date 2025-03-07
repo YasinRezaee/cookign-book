@@ -1,11 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Recipe } from '../../../Models/recipe';
-import { LoadingService } from '../../../Loading/loading.service';
-import { RecipesService } from '../../../services/recipes.service';
+import { Router, RouterLink } from '@angular/router';
+import { NgClass } from '@angular/common';
+ 
 
 @Component({
   selector: 'app-recipe-item',
-  imports: [],
+  imports: [RouterLink, NgClass],
   templateUrl: './recipe-item.component.html',
   styleUrl: './recipe-item.component.css'
 })
@@ -13,17 +14,16 @@ export class RecipeItemComponent implements OnInit{
 @Input() recipe?:Recipe;
 
 constructor(
-  private loadingService: LoadingService,
-  private recipeService: RecipesService
+  private router: Router,
 ) { }
+
 ngOnInit(): void {
    
 }
 
-onSelectRecipe() {
-  this.loadingService.show();
-  this.recipeService.recipeSelected.emit(this.recipe )
-  this.loadingService.hide(); 
-}
+isActive(recipeId: any): boolean {  
+  return this.router.isActive('/recipes/' + recipeId, true);
+}  
+
 }
 

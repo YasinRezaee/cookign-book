@@ -4,7 +4,8 @@ import { Ingredient } from '../Models/ingredient';
 import { MatTableModule } from '@angular/material/table';
 import { ShoppingListService } from '../services/shopping-list.service';
 import { ShareService } from '../services/share.service';
-import { Subscription } from 'rxjs';
+import { interval, map, Subscription } from 'rxjs';
+ 
 
 @Component({
   selector: 'app-shopping-list',
@@ -14,6 +15,7 @@ import { Subscription } from 'rxjs';
 })
 export class ShoppingListComponent implements OnInit, OnDestroy {
   refreshSubscription?: Subscription;
+  intervalsubscription?: Subscription;
   ingredients: Ingredient[] = [];
   constructor(
     private service: ShoppingListService,
@@ -34,6 +36,12 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.getAllIngredients();
+    this.intervalsubscription= interval(1000).pipe(map((data:any)=>{
+      return `Round ${data}`;
+    })).subscribe((data:any)=>{
+       console.log(data);
+       
+    });
   }
 
   getAllIngredients() {
@@ -44,5 +52,8 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.refreshSubscription?.unsubscribe();
+    this.intervalsubscription?.unsubscribe();
    }
+
+  
 }

@@ -16,7 +16,7 @@ export class RecipesService {
     return this.apiService.get('recipes');
   }
   
-  getRecipeById(id:number){
+  getRecipeById(id:string){
     return this.apiService.get(`recipes/${id}`);
   }
 }
