@@ -135,6 +135,26 @@
       "id": "8",
       "name": "bread",
       "amount": 6
+    },
+    {
+      "id": "9",
+      "name": "lemon",
+      "amount": 1
+    },
+    {
+      "id": "10",
+      "name": "yogurt",
+      "amount": 1
+    },
+    {
+      "id": "11",
+      "name": "fat milk",
+      "amount": 1
+    },
+    {
+      "id": "12",
+      "name": "cream",
+      "amount": 1
     }
   ],
   "users": [
