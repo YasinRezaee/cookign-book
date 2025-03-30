@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MatIcon } from '@angular/material/icon';
+import { User, UsersService } from '../services/users.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-practice-field',
@@ -11,19 +12,31 @@ import { MatIcon } from '@angular/material/icon';
 export class PracticeFieldComponent implements OnInit {
   genderList = ['Male', 'Female'];
   signUpForm!: FormGroup;
+  allUsers: User[] = [];
 
-  constructor(private fb: FormBuilder) { }
+  constructor(
+    private fb: FormBuilder,
+    private userService: UsersService
+  ) { }
 
   ngOnInit(): void {
     this.formListSighUp();
+    this.getAllUsers();
+    // this.setInitValue();
+    this.signUpForm.statusChanges.subscribe(data => {
+      console.log(data);
+    })
+    // this.signUpForm.valueChanges.subscribe(data => {
+    //   console.log(data);
+    // })
+
   }
 
   formListSighUp() {
     this.signUpForm = this.fb.group({
-      name: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      text: ['', Validators.required],
-      option: ['', Validators.required],
+      name: ['', [Validators.required, this.validateUser.bind(this)]],
+      email: ['', [Validators.required, Validators.email], this.validateEmail.bind(this)],
+      password: ['', Validators.required],
       gender: ['', Validators.required],
       address: this.fb.group({
         street: ['', Validators.required],
@@ -47,8 +60,71 @@ export class PracticeFieldComponent implements OnInit {
     this.newHobbies.push(hobbyControl);
   }
 
-  onsubmit(formValue: any) {
-    console.log(formValue);
-    // Handle form submission here
+  getAllUsers() {
+    this.userService.getAllUsers().subscribe(data => {
+      this.allUsers = data;
+    })
+  }
+
+  validateUser(control: FormControl) {
+    let checkedUsers = this.allUsers.some(user => user.name === control.value);
+    if (checkedUsers) {
+      return { 'forbiddenUserName': true };
+    }
+    return null;
+  }
+
+  validateEmail(control: FormControl): Promise<any> | Observable<any> {
+    const promise = new Promise((resolve, reject) => {
+      if (this.allUsers.some(user => user.email === control.value)) {
+        return resolve({ 'forbiddenEmail': true });
+      } else {
+        return resolve(null);
+      }
+    });
+    return promise;
+  }
+
+  onsubmit(formValue: User) {
+    if (this.signUpForm.invalid) {
+      this.signUpForm.markAllAsTouched();
+      this.signUpForm.updateValueAndValidity();
+      alert('Please fill all the fields');
+      return;
+    }
+    const userModel: User = {
+      name: formValue.name,
+      email: formValue.email,
+      password: formValue.password,
+      gender: formValue.gender,
+      address: {
+        street: formValue.address.street,
+        city: formValue.address.city,
+        zip: formValue.address.zip
+      },
+      hobbies: formValue.hobbies
+    }
+    this.userService.addUser(userModel).subscribe(data => {
+      confirm('User added successfully');
+      this.getAllUsers();
+      this.signUpForm.reset();
+    })
+  }
+
+  setInitValue() {
+    this.signUpForm.setValue(
+      {
+        name: "test",
+        email: 'test@gmail.com',
+        password: '',
+        gender: 'Male',
+        address: {
+          street: '',
+          city: '',
+          zip: ''
+        },
+        hobbies: []
+      }
+    )
   }
 }
