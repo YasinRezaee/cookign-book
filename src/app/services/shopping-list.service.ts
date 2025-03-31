@@ -26,4 +26,8 @@ addNewIgrds(model:Ingredient):Observable<any>{
 editIgredient(id: string, model: Ingredient): Observable<any> {
   return this.apiService.put('ingredients', id, model);  
 }
+
+deleteIngredient(id: string): Observable<any> {
+  return this.apiService.delete(id, 'ingredients');
+}
 }

@@ -71,13 +71,18 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
   }
 
   editIngredient(ingrdsForm: Ingredient) {
-    const newIng = { id: this.selectedToEditId, name: ingrdsForm.name, amount: ingrdsForm.amount };
-    this.slService.editIgredient(this.selectedToEditId, newIng).subscribe(
+    const editIng = {
+      id: this.selectedToEditId,
+      name: ingrdsForm.name,
+      amount: ingrdsForm.amount
+    };
+    this.slService.editIgredient(this.selectedToEditId, editIng).subscribe(
       {
         next: (data) => {
           if (data) {
-            this.ingrdsForm.reset();
             this.shareService.refreshData.next(true);
+            this.ingrdsForm.reset();
+            this.editMode = false;
           }
         },
         error: (err) => {
@@ -88,6 +93,36 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
     )
   }
 
+  onClear() {
+    this.ingrdsForm.reset();
+    this.editMode = false;
+  }
+
+  deleteIngredient(ingrdsForm: Ingredient) {
+    debugger
+    if (!ingrdsForm.amount || !ingrdsForm.name) {
+      return alert('Please select an ingredient to delete');
+    } else {
+      const deletedIng = {
+        id: this.selectedToEditId,
+        name: ingrdsForm.name,
+        amount: ingrdsForm.amount
+      };
+      let id = deletedIng.id;
+      if (confirm('Are you sure you want to delete this ingredient?')) {
+        this.slService.deleteIngredient(id).subscribe({
+          next: () => {
+            this.shareService.refreshData.next(true);
+            this.ingrdsForm.reset();
+          },
+          error: (err) => {
+            console.error("Error deleting ingredient:", err);
+            // Optional: Show error message
+          }
+        });
+      }
+    }
+  }
   isSubData(newIng: Ingredient) {
     this.slService.addNewIgrds(newIng).subscribe(
       {

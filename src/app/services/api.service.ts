@@ -38,6 +38,7 @@ export class ApiService {
       .pipe(catchError(this.handleError));
   }
 
+
   private handleError(error: any): Observable<never> {
     console.error('An error occurred:', error);
     throw new Error('Something went wrong; please try again later.');
