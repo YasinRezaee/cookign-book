@@ -100,6 +100,26 @@
       "id": "2",
       "name": "pasta",
       "amount": 2
+    },
+    {
+      "id": "fe95c554-79d1-4b5c-aa4e-1912893edefa",
+      "name": "pasta",
+      "amount": 2
+    },
+    {
+      "id": "8e7dea04-2727-4db2-a055-0a72374c5cfc",
+      "name": "Applesfdbdf",
+      "amount": 2
+    },
+    {
+      "id": "46ceb6ef-933b-47a5-8c52-f5a8601b47da",
+      "name": "dvzdsv",
+      "amount": 5
+    },
+    {
+      "id": "7a994107-82b0-4802-9253-04e65fa24109",
+      "name": "bread",
+      "amount": 3
     }
   ],
   "users": [
@@ -117,7 +137,8 @@
         "reading a good book",
         "watching movies",
         "playing games"
-      ]
+      ],
+      "id": "9670"
     },
     {
       "id": "ee8d",

@@ -15,7 +15,7 @@ import { interval, map, Subscription } from 'rxjs';
 })
 export class ShoppingListComponent implements OnInit, OnDestroy {
   refreshSubscription?: Subscription;
-  intervalsubscription?: Subscription;
+  // intervalsubscription?: Subscription;
   ingredients: Ingredient[] = [];
   constructor(
     private service: ShoppingListService,
@@ -36,12 +36,12 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.getAllIngredients();
-    this.intervalsubscription= interval(1000).pipe(map((data:any)=>{
-      return `Round ${data}`;
-    })).subscribe((data:any)=>{
-       console.log(data);
+    // this.intervalsubscription= interval(1000).pipe(map((data:any)=>{
+    //   return `Round ${data}`;
+    // })).subscribe((data:any)=>{
+    //    console.log(data);
        
-    });
+    // });
   }
 
   getAllIngredients() {
@@ -52,8 +52,11 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.refreshSubscription?.unsubscribe();
-    this.intervalsubscription?.unsubscribe();
+    // this.intervalsubscription?.unsubscribe();
    }
 
+   editIngre(ingre: Ingredient){
+     this.service.startEditing.next(ingre);
+   }
   
 }

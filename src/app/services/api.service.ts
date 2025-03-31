@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, model } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -27,8 +27,8 @@ export class ApiService {
   }
 
   // Update
-  put(id: any, data: any): Observable<any> {
-    return this.http.put<any>(`${this.apiUrl}/${data}/${id}`, this.httpOptions)
+  put(endpoint: string, id: string, data: any): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/${endpoint}/${id}`, data, this.httpOptions)
       .pipe(catchError(this.handleError));
   }
 

@@ -1,12 +1,13 @@
 import {  Injectable, OnInit } from '@angular/core';
 import { Ingredient } from '../Models/ingredient';
 import { ApiService } from './api.service';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ShoppingListService implements OnInit{
+ startEditing = new Subject<Ingredient>();
  ingredients: Ingredient[] = [];
   constructor(
     private apiService: ApiService,
@@ -20,5 +21,9 @@ getIngredients(){
   }
 addNewIgrds(model:Ingredient):Observable<any>{
  return this.apiService.post('ingredients', model);
+}
+
+editIgredient(id: string, model: Ingredient): Observable<any> {
+  return this.apiService.put('ingredients', id, model);  
 }
 }

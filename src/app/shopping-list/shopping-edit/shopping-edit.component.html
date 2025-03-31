@@ -12,7 +12,11 @@
 </div>
 <div class="row">
     <div class="col-sm-12">
-        <button class="btn btn-success me-3 btn-ingred" (click)="addIngredient(ingrdsForm.value)">Add </button>
+        @if (editMode) {
+            <button class="btn btn-primary me-3 btn-ingred" (click)="editIngredient(ingrdsForm.value)">Edit </button>
+        } @else {
+            <button class="btn btn-success me-3 btn-ingred" (click)="addIngredient(ingrdsForm.value)">Add </button>
+        }
         <button class="btn btn-danger me-3 btn-ingred">Delete</button>
         <button class="btn btn-warning btn-ingred text-light">Clear</button>
     </div>

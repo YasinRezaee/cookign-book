@@ -4,7 +4,7 @@
         <hr>
         <ul class="list-group">
         @for (ingre of ingredients; track $index) {
-                <li class="list-group-item">{{ingre.name}} _____ ( {{ingre.amount}} )</li>
+                <li (click)="editIngre(ingre)" class="list-group-item" role="button">{{ingre.name}} _____ ( {{ingre.amount}} )</li>
             }
         </ul>
     </div>
