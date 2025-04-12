@@ -87,6 +87,51 @@
   ],
   "ingredients": [
     {
+      "id": "2",
+      "name": "pasta",
+      "amount": 2
+    },
+    {
+      "id": "623d8b72-9d84-4b11-9c5c-ea0d8f9f1225",
+      "name": "egg",
+      "amount": 4
+    },
+    {
+      "id": "9",
+      "name": "lemon",
+      "amount": 1
+    },
+    {
+      "id": "10",
+      "name": "yogurt",
+      "amount": 1
+    },
+    {
+      "id": "1",
+      "name": "apple",
+      "amount": 3
+    },
+    {
+      "id": "4",
+      "name": "pepper",
+      "amount": 44
+    },
+    {
+      "id": "2",
+      "name": "pasta",
+      "amount": 2
+    },
+    {
+      "id": "3",
+      "name": "cheese",
+      "amount": 3
+    },
+    {
+      "id": "4",
+      "name": "pepper",
+      "amount": 44
+    },
+    {
       "id": "1",
       "name": "apple",
       "amount": 3
@@ -97,9 +142,9 @@
       "amount": 2
     },
     {
-      "id": "623d8b72-9d84-4b11-9c5c-ea0d8f9f1225",
-      "name": "egg",
-      "amount": 4
+      "id": "3",
+      "name": "cheese",
+      "amount": 3
     }
   ],
   "users": [
@@ -164,6 +209,23 @@
       },
       "hobbies": [
         "cooking"
+      ]
+    },
+    {
+      "id": "5c85",
+      "name": "Setareh",
+      "email": "seti@gmail.com",
+      "password": "123",
+      "gender": "Female",
+      "address": {
+        "street": "poonak",
+        "city": "tehran",
+        "zip": "123456789"
+      },
+      "hobbies": [
+        "book reading",
+        "watching series",
+        "music"
       ]
     }
   ]

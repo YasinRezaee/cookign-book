@@ -17,7 +17,9 @@
         } @else {
             <button class="btn btn-success me-3 btn-ingred" (click)="addIngredient(ingrdsForm.value)">Add </button>
         }
-        <button class="btn btn-danger me-3 btn-ingred" (click)="deleteIngredient(ingrdsForm.value)">Delete</button>
+        @if (editMode) {
+            <button  class="btn btn-danger me-3 btn-ingred" (click)="deleteIngredient(ingrdsForm.value)">Delete</button>
+        }
         <button class="btn btn-warning btn-ingred text-light" (click)="onClear()">Clear</button>
     </div>
 </div>

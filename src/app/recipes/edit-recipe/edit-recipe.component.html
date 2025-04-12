@@ -1,1 +1,93 @@
-<p>edit-recipe works!</p>
+<div class="container">
+  <form [formGroup]="recipeForm">
+    <div class="row mb-4">
+      <div class="col-md-12">
+        <button class="btn btn-success mx-4">Save</button>
+        <button class="btn btn-danger">Cancel</button>
+      </div>
+    </div>
+    <div class="row mb-4">
+      <div class="col-md-12">
+        <label class="form-label text-danger h6 ms-2" for="name">Name</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Name"
+          formControlName="name"
+        />
+      </div>
+    </div>
+    <div class="row mb-4">
+      <div class="col-md-12">
+        <label class="form-label text-danger h6 ms-2" for="imagePath"
+          >Image URL</label
+        >
+        <input
+          type="text"
+          class="form-control"
+          id="imagePath"
+          placeholder="Image URL"
+          formControlName="imagePath"
+        />
+      </div>
+    </div>
+    <div class="row mb-4">
+      <div class="col-md-12">
+        <label class="form-label text-danger h6 ms-2" for="description"
+          >Description</label
+        >
+        <textarea
+          class="form-control"
+          id="description"
+          rows="3"
+          formControlName="description"
+        ></textarea>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <label class="form-label text-danger h6 ms-2" for="ingredients"
+          >Ingredients</label
+        >
+      </div>
+      @if (editMode) {
+        <div class="col-md-12">
+            <button type="button" class="btn btn-sm" (click)="addIngredient()">
+                <mat-icon>library_add</mat-icon>
+            </button>
+      </div>
+      }
+
+    </div>
+    <!-- In your template -->
+    <div class="row" formArrayName="ingredients">
+      @for (item of ingredients.controls; let i = $index; track $index) {
+      <div class="row mb-2" [formGroupName]="i">
+        <div class="col-7">
+          <input
+            type="text"
+            class="form-control"
+            formControlName="name"
+            placeholder="Ingredient name"
+          />
+        </div>
+        <div class="col-3">
+          <input
+            type="number"
+            class="form-control"
+            formControlName="amount"
+            placeholder="Amount"
+          />
+        </div>
+        <div class="col-1">
+          <button type="button" class="btn btn-sm" (click)="removeIngredient(i)"> 
+            <mat-icon>cancel</mat-icon> </button>
+        </div>
+      </div>
+      }
+    </div>
+   
+      
+
+  </form>
+</div>

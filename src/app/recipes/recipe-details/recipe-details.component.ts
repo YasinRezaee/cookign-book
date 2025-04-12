@@ -17,11 +17,13 @@ export class RecipeDetailsComponent implements OnInit {
   recipe?: any;
   id: string = '';
 
+
   constructor(
     private shareService: ShareService,
     private route: ActivatedRoute,
     private recipeService: RecipesService,
     private router: Router,
+    private sharedService: ShareService,
   ) { }
 
   ngOnInit() {
@@ -33,13 +35,15 @@ export class RecipeDetailsComponent implements OnInit {
     });
   }
 
-  addToSoppingList(ingredients: any) {
-    this.shareService.addedingerient.next(ingredients);
+  addToSoppingList(Recipe: any) {
+    this.shareService.addedingerient.next(Recipe);
     this.router.navigate(['/shopping-list']);
   }
 
-  onEditRecipe() {
+  onEditRecipe(recipe: any) {
     this.router.navigate(['edit'], { relativeTo: this.route });
+    this.shareService.updateRecipe.next(recipe);
+    
   }
 }
 
