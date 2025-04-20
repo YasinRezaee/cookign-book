@@ -19,6 +19,7 @@ export class ShoppingListService implements OnInit{
 getIngredients(){
     return this.apiService.get('ingredients');
   }
+  
 addNewIgrds(model:Ingredient):Observable<any>{
  return this.apiService.post('ingredients', model);
 }

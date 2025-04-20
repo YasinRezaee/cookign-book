@@ -2,8 +2,8 @@
   <form [formGroup]="recipeForm">
     <div class="row mb-4">
       <div class="col-md-12">
-        <button class="btn btn-success mx-4">Save</button>
-        <button class="btn btn-danger">Cancel</button>
+        <button class="btn btn-success mx-4" (click)="manageRecipe(recipeForm.value)">Save</button>
+        <button class="btn btn-danger" (click)="cancelOperation()">Cancel</button>
       </div>
     </div>
     <div class="row mb-4">
@@ -50,13 +50,12 @@
           >Ingredients</label
         >
       </div>
-      @if (editMode) {
+
         <div class="col-md-12">
             <button type="button" class="btn btn-sm" (click)="addIngredient()">
                 <mat-icon>library_add</mat-icon>
             </button>
       </div>
-      }
 
     </div>
     <!-- In your template -->
@@ -86,8 +85,5 @@
       </div>
       }
     </div>
-   
-      
-
   </form>
 </div>

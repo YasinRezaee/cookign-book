@@ -43,7 +43,15 @@ export class RecipeDetailsComponent implements OnInit {
   onEditRecipe(recipe: any) {
     this.router.navigate(['edit'], { relativeTo: this.route });
     this.shareService.updateRecipe.next(recipe);
-    
+  }
+
+  onRemoveRecipe(recipe: any) {
+    this.recipeService.deleteRecipe(recipe.id).subscribe({
+      next: (res) => {
+        alert("Recipe was removed successfully");
+        this.sharedService.refreshAllRecipes.next(true);
+      }
+    })
   }
 }
 

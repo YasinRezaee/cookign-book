@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Recipe } from '../../../Models/recipe';
 import { Router, RouterLink } from '@angular/router';
 import { NgClass } from '@angular/common';
+import { ShareService } from '../../../services/share.service';
  
 
 @Component({
@@ -18,11 +19,12 @@ constructor(
 ) { }
 
 ngOnInit(): void {
-   
+
 }
 
 isActive(recipeId: any): boolean {  
   return this.router.isActive('/recipes/' + recipeId, true);
+  
 }  
 
 }

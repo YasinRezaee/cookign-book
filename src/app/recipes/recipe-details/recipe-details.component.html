@@ -11,7 +11,7 @@
         <mat-menu #menu="matMenu">
           <button mat-menu-item class="text-primary" (click)="addToSoppingList(recipe?.ingredients)">To Shopping List</button>
           <button mat-menu-item class="text-primary" (click)="onEditRecipe(recipe)">Edit Recipe</button>
-          <button mat-menu-item class="text-primary">Delete Recipe</button>
+          <button mat-menu-item class="text-primary" (click)="onRemoveRecipe(recipe)">Delete Recipe</button>
         </mat-menu>
       </div>
     </div>
