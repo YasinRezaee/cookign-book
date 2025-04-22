@@ -6,6 +6,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import { LoadingComponent } from "./Loading/loading/loading.component";
+import { TranslatePipe } from './Pipes/translate.pipe';
  
 
 @Component({
@@ -13,9 +14,10 @@ import { LoadingComponent } from "./Loading/loading/loading.component";
   imports: [RouterOutlet, CommonModule,
      RouterLink, RouterLinkActive,
      MatToolbarModule, MatButtonModule, 
-     MatIconModule, MatMenuModule, LoadingComponent],
+     MatIconModule, MatMenuModule, LoadingComponent, TranslatePipe],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
+  providers: [TranslatePipe]
 })
 export class AppComponent {
    

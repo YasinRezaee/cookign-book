@@ -5,10 +5,11 @@ import { RecipesService } from '../../services/recipes.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ShareService } from '../../services/share.service';
 import { Subscription } from 'rxjs';
+import { TranslatePipe } from '../../Pipes/translate.pipe';
 
 @Component({
   selector: 'app-recipe-list',
-  imports: [RecipeItemComponent],
+  imports: [RecipeItemComponent, TranslatePipe],
   templateUrl: './recipe-list.component.html',
   styleUrl: './recipe-list.component.css'
 })

@@ -5,10 +5,11 @@ import { ShareService } from '../../services/share.service';
 import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { RecipesService } from '../../services/recipes.service';
+import { TranslatePipe } from '../../Pipes/translate.pipe';
 
 @Component({
   selector: 'app-edit-recipe',
-  imports: [ReactiveFormsModule, MatIconModule],
+  imports: [ReactiveFormsModule, MatIconModule,TranslatePipe],
   templateUrl: './edit-recipe.component.html',
   styleUrl: './edit-recipe.component.css'
 })

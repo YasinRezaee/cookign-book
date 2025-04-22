@@ -6,10 +6,11 @@ import { MatMenuModule } from '@angular/material/menu';
 import { ShareService } from '../../services/share.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RecipesService } from '../../services/recipes.service';
+import { TranslatePipe } from '../../Pipes/translate.pipe';
 
 @Component({
   selector: 'app-recipe-details',
-  imports: [MatMenuModule, MatIconModule, MatButtonModule, MatToolbarModule],
+  imports: [MatMenuModule, MatIconModule, MatButtonModule, MatToolbarModule, TranslatePipe],
   templateUrl: './recipe-details.component.html',
   styleUrl: './recipe-details.component.css'
 })

@@ -1,3 +1,7 @@
 .btn-ingred{
     min-width: 100px !important;
 }
+
+.mdc-text-field--filled {
+    background-color: #ffffff !important;
+}

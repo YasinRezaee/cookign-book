@@ -7,11 +7,11 @@
     </div>
     <div class="row my-4">
       <div class="col-md-12">
-        <button [matMenuTriggerFor]="menu" class="btn bg-dark text-warning mx-5">Manage Recipe</button>
+        <button [matMenuTriggerFor]="menu" class="btn bg-dark text-warning mx-5">{{'@ManageRecipe' | translate}}</button>
         <mat-menu #menu="matMenu">
-          <button mat-menu-item class="text-primary" (click)="addToSoppingList(recipe?.ingredients)">To Shopping List</button>
-          <button mat-menu-item class="text-primary" (click)="onEditRecipe(recipe)">Edit Recipe</button>
-          <button mat-menu-item class="text-primary" (click)="onRemoveRecipe(recipe)">Delete Recipe</button>
+          <button mat-menu-item class="text-primary" (click)="addToSoppingList(recipe?.ingredients)">{{'@ToShoppingList' | translate}}</button>
+          <button mat-menu-item class="text-primary" (click)="onEditRecipe(recipe)">{{'@EditRecipe' | translate}}</button>
+          <button mat-menu-item class="text-primary" (click)="onRemoveRecipe(recipe)">{{'@DeleteRecipe' | translate}}</button>
         </mat-menu>
       </div>
     </div>
@@ -23,7 +23,7 @@
     
     <div class="row">
         <div class="col-md-6">  
-            <p class="text-danger">Ingredients</p>
+            <p class="text-danger">{{'@Ingredients' | translate}}</p>
             <ul class="list-group">
                 @for (ingre of recipe?.ingredients; track $index) {
                     <li class="list-group-item">{{ingre.name}} _____ ( {{ingre.amount}} )</li>

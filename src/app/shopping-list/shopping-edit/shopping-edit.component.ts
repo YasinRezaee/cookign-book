@@ -7,10 +7,11 @@ import { ShoppingListService } from '../../services/shopping-list.service';
 import { Ingredient } from '../../Models/ingredient';
 import { ShareService } from '../../services/share.service';
 import { Subscription } from 'rxjs/internal/Subscription';
+import { TranslatePipe } from '../../Pipes/translate.pipe';
 
 @Component({
   selector: 'app-shopping-edit',
-  imports: [MatInputModule, MatFormFieldModule, FormsModule, ReactiveFormsModule],
+  imports: [MatInputModule, MatFormFieldModule, FormsModule, ReactiveFormsModule,TranslatePipe],
   templateUrl: './shopping-edit.component.html',
   styleUrl: './shopping-edit.component.css'
 })

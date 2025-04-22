@@ -104,16 +104,6 @@
       "amount": 44
     },
     {
-      "id": "2",
-      "name": "pasta",
-      "amount": 2
-    },
-    {
-      "id": "4",
-      "name": "pepper",
-      "amount": 44
-    },
-    {
       "id": "1",
       "name": "apple",
       "amount": 3
@@ -124,9 +114,9 @@
       "amount": 2
     },
     {
-      "id": "3",
-      "name": "cheese",
-      "amount": 3
+      "id": "c8479b31-f89f-455e-9322-1b90aa953b4a",
+      "name": "بببب",
+      "amount": 2
     }
   ],
   "users": [
