@@ -1,12 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
-
+@import './app/Assets/fonts.scss';
 html, body { 
     height: 100%; 
     direction: rtl;
 }
 body { 
     margin: 0; 
-    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-family: 'Vazir', sans-serif;
     direction: rtl;
  }
 
+*{
+    font-family: 'Vazir', sans-serif;
+}

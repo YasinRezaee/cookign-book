@@ -1,26 +1,65 @@
-<mat-toolbar class="bg-dark text-danger mb-4">
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-      <mat-icon class="text-danger">menu</mat-icon>
+<nav class="navbar navbar-expand-md navbar-dark">
+  <div class="container">
+    <!-- Brand/logo -->
+    <a class="navbar-brand"> {{ "@RecipeBook" | translate }} </a>
+
+    <!-- Toggler/collapsible Button -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#collapsibleNavbar"
+    >
+      <span class="navbar-toggler-icon"></span>
     </button>
-    <span>{{'@RecipeBook' | translate}}</span>
-    <div class="ms-4">
-      <a routerLink="/recipes" routerLinkActive="active" class="btn btn-md text-danger" >{{'@Recipe' | translate}}</a>
-      <a routerLink="/shopping-list" routerLinkActive="active" class="btn btn-md text-danger" >{{'@ShoppingList' | translate}}</a>
-      <a routerLink="/practice-field" routerLinkActive="active" class="btn btn-md text-danger" >{{'@SignUp' | translate}}</a>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse " id="collapsibleNavbar">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a routerLink="/recipes" routerLinkActive="active" class="nav-link">{{
+            "@Recipe" | translate
+          }}</a>
+        </li>
+        <li class="nav-item">
+          <a
+            routerLink="/shopping-list"
+            class="nav-link"
+            routerLinkActive="active"
+            >{{ "@ShoppingList" | translate }}</a
+          >
+        </li>
+      </ul>
+      <!-- Signup or Login button with an icon inside it -->
+      <div>
+        <button class="btn btn-login ml-md-2">
+          <a
+          routerLink="/practice-field"
+          class="nav-link"
+          routerLinkActive="active"
+          >{{ "@SignUp" | translate }}</a>
+        </button>
+        <button mat-button [matMenuTriggerFor]="menu">
+          <mat-icon class="text-light">settings</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item class="text-primary">
+            {{ "@SaveData" | translate }}
+          </button>
+          <button mat-menu-item class="text-primary">
+            {{ "@FetchData" | translate }}
+          </button>
+        </mat-menu>
+      </div>
     </div>
-    <span class="example-spacer"></span>
-    <button mat-button [matMenuTriggerFor]="menu" class="text-danger">{{'@Manage' | translate}}</button>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item class="text-primary">{{'@SaveData' | translate}}</button>
-      <button mat-menu-item class="text-primary">{{'@FetchData' | translate}}</button>
-    </mat-menu>
-  </mat-toolbar> 
-  
+  </div>
+</nav>
+
 <div class="container">
-    <div class="row">
-        <div class="col-md-12">
-          <app-loading></app-loading>
-            <router-outlet></router-outlet>
-        </div>
+  <div class="row">
+    <div class="col-md-12">
+      <app-loading></app-loading>
+      <router-outlet></router-outlet>
     </div>
-</div> 
+  </div>
+</div>
