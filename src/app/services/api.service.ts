@@ -7,7 +7,8 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ApiService {
-  private apiUrl = 'http://localhost:3000';
+  private apiUrl = 'https://my-webapp-c6d93-default-rtdb.firebaseio.com';
+  
 
   private httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -17,24 +18,24 @@ export class ApiService {
 
   // Read
   get(data:any): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/${data}`)
+    return this.http.get<any[]>(`${this.apiUrl}/${data}.json`)
       .pipe(catchError(this.handleError));
   }
   // Create
   post(data:any, model:any): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/${data}`, model, this.httpOptions)
+    return this.http.post<any>(`${this.apiUrl}/${data}.json`, model, this.httpOptions)
       .pipe(catchError(this.handleError));
   }
 
   // Update
   put(endpoint: string, id: string, data: any): Observable<any> {
-    return this.http.put<any>(`${this.apiUrl}/${endpoint}/${id}`, data, this.httpOptions)
+    return this.http.put<any>(`${this.apiUrl}/${endpoint}/${id}.json`, data, this.httpOptions)
       .pipe(catchError(this.handleError));
   }
 
   // Delete
   delete(id: any, data: any): Observable<any> {
-    return this.http.delete<any>(`${this.apiUrl}/${data}/${id}`, this.httpOptions)
+    return this.http.delete<any>(`${this.apiUrl}/${data}/${id}.json`, this.httpOptions)
       .pipe(catchError(this.handleError));
   }
 

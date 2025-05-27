@@ -41,9 +41,12 @@ this.subscription = this.ShareService.refreshAllRecipes.subscribe({
   }
 
   getRecipes(){
-    this.recipeService.getAllRecipes().subscribe(recipes=>{
-      this.recipes=recipes;
-    })
+    this.recipeService.getAllRecipes().subscribe((data) => {
+      Object.entries(data).forEach(([key, value]) => {
+        this.recipes.push({ ...value, key }); 
+      });
+      console.log("Recipes array with keys:", this.recipes);
+    });
   }
 
   addNewRecipe(){

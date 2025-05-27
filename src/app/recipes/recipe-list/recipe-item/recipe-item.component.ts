@@ -23,8 +23,7 @@ ngOnInit(): void {
 }
 
 isActive(recipeId: any): boolean {  
-  return this.router.isActive('/recipes/' + recipeId, true);
-  
+return this.router.isActive('/recipes/' + recipeId, true);
 }  
 
 }

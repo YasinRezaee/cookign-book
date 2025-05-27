@@ -36,8 +36,8 @@ export class RecipeDetailsComponent implements OnInit {
     });
   }
 
-  addToSoppingList(Recipe: any) {
-    this.shareService.addedingerient.next(Recipe);
+  addToSoppingList(ing: any) {
+    this.shareService.addedingerient.next(ing);
     this.router.navigate(['/shopping-list']);
   }
 

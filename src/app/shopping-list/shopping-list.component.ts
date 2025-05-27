@@ -5,7 +5,7 @@ import { MatTableModule } from '@angular/material/table';
 import { ShoppingListService } from '../services/shopping-list.service';
 import { ShareService } from '../services/share.service';
 import { interval, map, Subscription } from 'rxjs';
- 
+
 
 @Component({
   selector: 'app-shopping-list',
@@ -24,10 +24,10 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
     this.refreshData();
   }
 
-  refreshData(){
+  refreshData() {
     this.refreshSubscription = this.shareService.refreshData.subscribe(
       (refresh: boolean) => {
-        if(refresh){
+        if (refresh) {
           this.getAllIngredients();
         }
       }
@@ -36,27 +36,27 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.getAllIngredients();
-    // this.intervalsubscription= interval(1000).pipe(map((data:any)=>{
-    //   return `Round ${data}`;
-    // })).subscribe((data:any)=>{
-    //    console.log(data);
-       
-    // });
+ 
   }
 
   getAllIngredients() {
+    this.ingredients= [];
     this.service.getIngredients().subscribe(ingr => {
-      this.ingredients = ingr;
+      Object.entries(ingr).forEach(([key, value]) => {
+        this.ingredients.push({ ...value, key })
+        console.log("ingredients",this.ingredients);
+        
+      })
     })
   }
 
   ngOnDestroy(): void {
     this.refreshSubscription?.unsubscribe();
     // this.intervalsubscription?.unsubscribe();
-   }
+  }
 
-   editIngre(ingre: Ingredient){
-     this.service.startEditing.next(ingre);
-   }
-  
+  editIngre(ingre: Ingredient) {
+    this.service.startEditing.next(ingre);
+  }
+
 }
