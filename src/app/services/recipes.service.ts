@@ -14,7 +14,7 @@ export class RecipesService {
   ) { }
 
   getAllRecipes(){
-    return this.apiService.get('recipes');
+    return this.apiService. get('recipes');
   }
 
   addNewRecipe(model:any):Observable<any>{
