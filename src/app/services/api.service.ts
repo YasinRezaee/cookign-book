@@ -7,7 +7,7 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ApiService {
-  private apiUrl = 'https://my-webapp-c6d93-default-rtdb.firebaseio.com';
+  private apiUrl = 'https://cooking-book-102a1-default-rtdb.firebaseio.com';
   
 
   private httpOptions = {
@@ -18,6 +18,7 @@ export class ApiService {
 
   // Read
   get(data:any): Observable<any[]> {
+    debugger
     return this.http.get<any[]>(`${this.apiUrl}/${data}.json`)
       .pipe(catchError(this.handleError));
   }
