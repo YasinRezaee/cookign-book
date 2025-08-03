@@ -10,6 +10,7 @@ import { Subscription } from 'rxjs/internal/Subscription';
 import { TranslatePipe } from '../../Pipes/translate.pipe';
 import { LoadingService } from '../../Loading/loading.service';
 import { Router } from '@angular/router';
+import { ToastService } from '../../Share/toast.service';
 
 @Component({
   selector: 'app-shopping-edit',
@@ -30,11 +31,12 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
     private fb: FormBuilder,
     private load: LoadingService,
     private router: Router,
-  ) {}
+    private alertSer: ToastService,
+  ) { }
 
   ngOnInit(): void {
     this.createIngrdsFormList();
-    
+
     this.editSubscription = this.slService.startEditing.subscribe((data: Ingredient) => {
       this.selectedToEditId = data.key;
       this.editMode = true;
@@ -53,22 +55,23 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
   }
 
   addIngredient(valueForm: any) {
-    this.load.show();
     if (this.ingrdsForm.invalid) {
+      debugger
       this.ingrdsForm.markAllAsTouched();
       this.ingrdsForm.updateValueAndValidity();
-      return alert('Please fill all the fields');
+      this.alertSer.error('فیلد های اجباری را پر کنید')
+      return;
     }
-    
+
     const ingredientId = uuidv4();
-    
-    const newIng: Ingredient = { 
-      id: ingredientId, 
-      name: valueForm.name, 
+
+    const newIng: Ingredient = {
+      id: ingredientId,
+      name: valueForm.name,
       amount: valueForm.amount,
-      key:'',
+      key: '',
     };
-    
+
     this.slService.addNewIgrds(newIng).subscribe({
       next: (data) => {
         if (data) {
@@ -76,11 +79,11 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
         }
       },
       error: (err) => {
-        console.log("err===>", err);
-      },complete:()=>{
+        this.alertSer.error(err)
+
+      }, complete: () => {
         this.ingrdsForm.reset();
         this.router.navigate(['shopping-list'])
-        this.load.hide();
       }
     });
   }
@@ -92,17 +95,18 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
       name: ingrdsForm.name,
       amount: ingrdsForm.amount
     };
-    
+
     this.slService.editIgredient(this.selectedToEditId, editIng).subscribe({
       next: (data) => {
         if (data) {
           this.shareService.refreshData.next(true);
           this.ingrdsForm.reset();
           this.editMode = false;
+          this.alertSer.success('ویرایش با موفقیت انجام شد.')
         }
       },
       error: (err) => {
-        console.log("err===>", err);
+        this.alertSer.error(err)
       }
     });
   }
@@ -114,17 +118,21 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
 
   deleteIngredient(ingrdsForm: Ingredient) {
     if (!ingrdsForm.amount || !ingrdsForm.name) {
-      return alert('Please select an ingredient to delete');
+      return this.alertSer.warning('یک آیتم را برای حذف انتخاب کنید! ')
+
     }
-    
-    if (confirm('Are you sure you want to delete this ingredient?')) {
+
+    if (confirm('آیا مطمعن هستید؟')) {
       this.slService.deleteIngredient(this.selectedToEditId).subscribe({
         next: () => {
           this.shareService.refreshData.next(true);
           this.ingrdsForm.reset();
+          return this.alertSer.success('آیتم انتخابی حذف شد!')
+
         },
         error: (err) => {
-          console.error("Error deleting ingredient:", err);
+          return this.alertSer.error(err)
+
         }
       });
     }

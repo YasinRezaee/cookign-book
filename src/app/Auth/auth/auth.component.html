@@ -1,0 +1,68 @@
+<div class="row mt-5">
+  <div class="col-xs-12 w-50">
+    <form [formGroup]="authForm" (ngSubmit)="onSubmitAuthForm()">
+      <div class="form-group mt-4">
+        <label for="email">ایمیل</label>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          class="form-control"
+          formControlName="email"
+          [class.is-invalid]="authForm.get('email')?.invalid && authForm.get('email')?.touched"
+        />
+        @if (authForm.get('email')?.invalid && authForm.get('email')?.touched) {
+          <div class="invalid-feedback">
+            @if (authForm.get('email')?.errors?.['required']) {
+              <span>ایمیل الزامی است</span>
+            }
+            @if (authForm.get('email')?.errors?.['email']) {
+              <span>ایمیل معتبر وارد کنید</span>
+            }
+          </div>
+        }
+      </div>
+      <div class="form-group mt-4">
+        <label for="password">رمز ورود</label>
+        <input
+          type="password"
+          name="password"
+          id="password"
+          class="form-control"
+          formControlName="password"
+          [class.is-invalid]="authForm.get('password')?.invalid && authForm.get('password')?.touched"
+        />
+        @if (authForm.get('password')?.invalid && authForm.get('password')?.touched) {
+          <div class="invalid-feedback">
+            @if (authForm.get('password')?.errors?.['required']) {
+              <span>رمز ورود الزامی است</span>
+            }
+            @if (authForm.get('password')?.errors?.['minlength']) {
+              <span>رمز ورود باید حداقل ۶ کاراکتر باشد</span>
+            }
+          </div>
+        }
+      </div>
+
+      <!-- Error Message Display -->
+      @if (errorMessage()) {
+        <div class="alert alert-danger mt-3">
+          {{ errorMessage() }}
+        </div>
+      }
+
+      <div class="mt-5">
+        <button
+          type="submit"
+          class="btn btn-primary ms-3"
+          [disabled]="!authForm.valid"
+        >
+          {{ isLoginMode() ? "ورود" : "ثبت نام" }}
+        </button>
+        <button type="button" class="btn btn-secondary" (click)="onLoginMood()">
+          تغییر به {{ isLoginMode() ? "ثبت نام" : "ورود" }}
+        </button>
+      </div> 
+    </form>
+  </div>
+</div>

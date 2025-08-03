@@ -13,3 +13,14 @@ body {
 *{
     font-family: 'Vazir', sans-serif;
 }
+ 
+/* Toast styling */
+.toast-success { background-color: #85f289; color: white; }
+.toast-error { background-color: #f66e65; color: white; }
+.toast-warning { background-color: #f1b54df9; color: white; }
+.toast-info { background-color: #75bbf4; color: white; }
+
+.mat-mdc-snack-bar-container .mdc-snackbar__surface {
+  box-shadow: none !important;
+  background-color: transparent !important;
+}

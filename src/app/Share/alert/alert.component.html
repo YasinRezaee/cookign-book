@@ -1,0 +1,13 @@
+<div class="toast-content">
+      <mat-icon>
+        @switch (data.type) {
+          @case ('success') { check_circle }
+          @case ('error') { error }
+          @case ('warning') { warning }
+          @default { info }
+        }
+      </mat-icon>
+      <div class="toast-message">
+        <div class="toast-text">{{ data.message }}</div>
+      </div>
+    </div>

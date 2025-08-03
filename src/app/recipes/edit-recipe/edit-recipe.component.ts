@@ -6,6 +6,7 @@ import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } fr
 import { MatIconModule } from '@angular/material/icon';
 import { RecipesService } from '../../services/recipes.service';
 import { TranslatePipe } from '../../Pipes/translate.pipe';
+import { ToastService } from '../../Share/toast.service';
 
 @Component({
   selector: 'app-edit-recipe',
@@ -23,6 +24,7 @@ export class EditRecipeComponent implements OnInit {
     private sharedService: ShareService,
     private recipeService: RecipesService,
     private fb: FormBuilder,
+    private toastService: ToastService,
   ) {
     this.route.params.subscribe((params: Params) => {
       this.id = params['id'];
@@ -85,7 +87,8 @@ export class EditRecipeComponent implements OnInit {
     if (this.editMode) {
       this.recipeService.updateRecipe(this.recipeId, editedModel).subscribe({
         next: (res) => {
-          alert("edit recipe was succesful!");
+          debugger
+          this.toastService.success('دستور غذا با موفقیت ویرایش شد!')
           this.refreshAll();
         }
       })
